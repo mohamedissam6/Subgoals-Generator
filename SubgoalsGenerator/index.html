@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subgoals Generator helps you break down Java programming problems into smaller, manageable subtasks, making it easier for high-school students to understand and solve coding challenges.">
+    <title>Subgoals</title>
+</head>
+
+
+<body>
+    <div class="BackGroundImg">
+        <div class="BackGroundTopLayer">
+            <div class="Heading">
+                <h1>Subgoals' Generator</h1>
+                <p class="description">This tool generates subgoals for Java programming problems using AI LLM. It breaks down issues into simpler steps, offering a structured approach for high-school students without revealing solutions.</p>
+            </div>
+            <br>
+            <div id="InputDiv">
+                <div class="form-style-5">
+
+                    <label for="Name">Problem Name</label>
+                    <input type="text" id="Name" name="Name">
+                    <label for="Problem">Problem Statement</label>
+                    <textarea name="Problem" id="Problem" placeholder="Write Problem Statement here..." rows="5"
+                        cols="30"></textarea>
+                    <input type="button" value="Generate" onclick="validateForm()">
+                </div>
+            </div>
+            <br>
+
+            <div id="OutputDiv">
+                <div class="form-style-5" id="OutputForm" >
+                    <label for="out">Subgoals</label>
+                    <textarea readonly name="out" id="Response" rows="10" cols="30" style="margin-bottom: 0;">
+.........
+........
+.......
+......
+.....
+....
+...
+
+            </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    var OPENAI_API_KEY = 'sk-mjeXWWdNXP1Y4JS4oltuT3BlbkFJ';
+
+    var messages = [
+        { "role": "system", "content": "you are a tool that provides subgoal labels for Java programming problems. This platform presents Java programs to high-school students at an introductory level of coding.What are subgoals: Subgoals are a breakdown to a programming problem into less complex subtasks. Subgoals are intended to make the question easier for the students, without providing the solution or coding details.What are Subgoal Labels: Subgoal labels are function-based instructional phrases that explain to the learner the purpose of that step, or subgoal, in the problem-solving process. For example: to solve a problem with a loop, students must define and initialize variables, so “defining and initializing variables” is a subgoal label of solving a problem with a loop.Requirements: You are required to write subgoal labels for a given problem. Do not include any code, answers, or hints towards the solution. Your response should not exceed 400 words.Examples: Below is an example illustrating the input problem details and the corresponding subgoal labels output:Example 1:Input:Problem Name: Dice rollProblem Statement: You have been told that a pair of dice roll the number 7 more than any other combination. You would like to find out if that’s true. To do this you have a pair of dice that you’ve rolled 20 times. You need to count how many times 7 was rolled. Here are all the rolls of the dice. How many times was 7 rolled?2, 8, 7, 6, 4, 7, 9, 11, 8, 6, 7, 4, 3, 5, 7, 11, 9, 7, 4, 12,Output:Subgoal Labels:Step one: define and initialize variable to hold the collection of dice rollsStep two: define and initialize variable to hold the count of 7 rollsStep three: initialize the loop to start at the beginning of the list of dice rollsStep four: determine when we are done with the list of dice rollsStep five: change the ending condition to be a continuing conditionStep six: move to the next rollStep seven: determine if the current dice roll is a 7Step eight: if the roll is 7, increment the countStep nine: print results , Please provide subgoals for the user's problem details." },
+        { "role": "user", "content": ". I am tool user " }
+    ];
+
+    function get_answer(callback) {
+        $.ajax({
+            url: 'https://api.openai.com/v1/chat/completions',
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + OPENAI_API_KEY
+            },
+            data: JSON.stringify({
+                model: "gpt-3.5-turbo",
+                messages: messages
+            }),
+            success: function (response) {
+                callback(response.choices[0].message.content);
+            }
+        });
+    }
+
+    function sendMessage() {
+        var user_message = "Problem name: " + $('#Name').val() + "Problem statment: " + $('#Problem').val();
+        document.getElementById('InputDiv').style.top = '0%';
+        document.getElementById('OutputDiv').style.top = '0%';
+        document.getElementById('OutputForm').style.border = '5px solid #163364';
+        checkAPIStatus(function (isAPIUp, errorMessage) {
+            if (isAPIUp) {
+                messages.push({ "role": "user", "content": user_message });
+                get_answer(function (reply) {
+                    $('#Response').val(reply);
+                    //messages.push({ "role": "assistant", "content": reply });
+                    message.pop();
+                });
+            }
+            else {
+                $('#Response').val('Sorry, the AI service is currently unavailable... \n' + errorMessage);
+            }
+        });
+    }
+
+    function checkAPIStatus(callback) {
+        $.ajax({
+            url: 'https://api.openai.com/v1/chat/completions',
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + OPENAI_API_KEY
+            },
+            data: JSON.stringify({
+                model: "gpt-3.5-turbo",
+                messages: [{ "role": "system", "content": "ping" }] // sending a test message to check the API
+            }),
+            success: function (response) {
+                callback(true, null); // API is up
+            },
+            error: function (xhr, status, error) {
+                // Capture and return the status code and error message
+                var errorMessage = "Error: " + xhr.status + " " + error;
+                callback(false, errorMessage); // API is down with error details
+            }
+        });
+    }
+
+    function validateForm() {
+            // Get the values of the inputs
+            var name = document.getElementById("Name").value.trim();
+            var problem = document.getElementById("Problem").value.trim();
+
+            // Check if the fields are empty
+            if (name === "") {
+                alert("Please enter a Problem Name.");
+                return false;
+            }
+
+            if (problem === "") {
+                alert("Please enter a Problem Statement.");
+                return false;
+            }
+
+            // If the fields are filled, call the sendMessage function
+            sendMessage();
+        }
+
+</script>

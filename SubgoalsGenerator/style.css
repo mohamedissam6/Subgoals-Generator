@@ -1,0 +1,198 @@
+.form-style-5{
+	max-width: 600px;
+	padding: 10px 20px;
+	background: #f4f7f8;
+	margin: 10px auto;
+	padding: 20px;
+	background: #f4f7f8;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-5 fieldset{
+	border: none;
+}
+.form-style-5 legend {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+.form-style-5 label {
+	display: block;
+	margin-bottom: 8px;
+}
+.form-style-5 input[type="text"],
+.form-style-5 input[type="date"],
+.form-style-5 input[type="datetime"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 input[type="search"],
+.form-style-5 input[type="time"],
+.form-style-5 input[type="url"],
+.form-style-5 textarea,
+.form-style-5 select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	background-color: #e8eeef;
+	color:#000000;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 30px;
+}
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 input[type="datetime"]:focus,
+.form-style-5 input[type="email"]:focus,
+.form-style-5 input[type="number"]:focus,
+.form-style-5 input[type="search"]:focus,
+.form-style-5 input[type="time"]:focus,
+.form-style-5 input[type="url"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus{
+	background: #d2d9dd;
+}
+.form-style-5 select{
+	-webkit-appearance: menulist-button;
+	height:35px;
+}
+.form-style-5 .number {
+	background: #1abc9c;
+	color: #fff;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 input[type="submit"],
+.form-style-5 input[type="button"]
+{
+	position: relative;
+	display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: #294675;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	width: 100%;
+	border: 1px solid #163364;
+	border-width: 1px 1px 3px;
+	margin-bottom: 10px;
+}
+.form-style-5 input[type="submit"]:hover,
+.form-style-5 input[type="button"]:hover
+{
+	background: #163364;
+    cursor: pointer;
+}
+
+.Heading{
+    top: 0;
+    left: 0;
+    right: 0;
+    height:10%;
+    /* border: 5px solid #5a2d74;
+    background-color:#6D3190; */
+    border: 5px solid #294675;
+    background-color:#294675;
+    color:white;
+    text-align: center;
+    font-size: large;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    min-height: 60px;
+    position: relative;
+    
+}
+.BackGroundImg{
+    background-image: url(assets/350829-widescreen-website-background-1920x1080-windows-xp.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+
+  }
+
+  .BackGroundTopLayer{
+    background-color: #ffffff56;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  }
+  /* .error{
+    color: red;
+    
+  }
+  #home{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  #home img{
+    width: 35%;
+    border-radius: 50%;
+    border: solid white 5px;
+    padding: 2px;
+    margin: 5px;
+  }
+  #home img:hover{
+    width: 40%;
+    border-radius: 50%;
+    border: solid white 5px;
+    padding: 2px;
+    margin: 5px;
+  }
+  .error-message {
+    color: red;
+    font-weight: bold;
+} */
+#InputDiv{
+    top: 12%;
+    position: relative;
+    transition: 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    z-index: 1;
+}
+#OutputDiv{
+    /* display: none; */
+    transition: 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    position: relative;
+    top: -29%;
+}
+/* body{
+    display: contents;
+} */
+html, body {
+  display: contents;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+#OutputForm{
+  
+  transition: 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition-delay: 0.6s;
+}
+.description{
+  padding: 5px;
+  color: #163364;
+  font-size: 14px;
+}
