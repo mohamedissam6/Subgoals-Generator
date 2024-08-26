@@ -1,2 +1,2 @@
 # Subgoals-Generator
-Subgoals Generator helps break down Java programming problems into simpler steps using AI. Ideal for high-school students, it provides structured subgoals without revealing solutions, enhancing problem-solving skills in coding.
+Subgoals Generator is a web-based tool that leverages AI to assist in breaking down Java programming problems into simpler, instructional steps. Designed for high-school students, this tool provides a structured approach to problem-solving by generating subgoal labels without revealing solutions. It uses OpenAI's language model to analyze problem statements and generate relevant subgoals, making it a valuable resource for introductory coding education.
